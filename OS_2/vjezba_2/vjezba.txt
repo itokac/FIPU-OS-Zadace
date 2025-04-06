@@ -1,0 +1,70 @@
+zadatak_1
+
+U radnom okruženju stvorite direktorije vjezba_2/data i vjezba_2/backup koristeći dvije naredbe mkdir
+mkdir vjezba_2
+mkdir vjezba_2/data && mkdir vjezba_2/backup
+
+Stvaranje datoteka u data direktoriju:
+ touch vjezba_2/data/script.js &&  touch vjezba_2/data/style.css &&  touch vjezba_2/data/.env
+
+Dodavanje sadržaja u datoteke:
+ echo 'console.log("Hello World!")' > vjezba_2/data/script.js
+echo 'body { background-color: #f0f0f0; }' > vjezba_2/data/style.css
+echo 'VJEZBE=OS' > vjezba_2/data/.env
+
+zadatak_2
+Kopirajte sav sadržaj direktorija data u direktorij backup koristeći odgovarajuću naredbu. Ispišite detalje o
+radnji.
+
+ cp -vr vjezba_2/data/. vjezba_2/backup
+
+Prebacite se u direktorij data i napravite detaljan ispis direktorija backup . Ispis mora biti detaljan,
+uključivati sve skrivene datoteke i biti sortiran po veličini.
+
+cd vjezba_2/data
+ls -laS ../backup
+
+zadatak_3
+Brisnanje svega unutar data osim .env
+find . -type f ! -name ".env" -exec rm -v {} \;
+
+Kopiranje iz data u direktorij backup bez skrivenih i onih koji već postoje
+cp -vn vjezba_2/backup/* vjezba_2/data/
+
+Detaljno ispišite sadržaj direktorija data koji mora sadržavati skrivene datoteke osim pokazivača na
+trenutni i radni direktorij, sortirane po datumu zadnje izmjene i svaki zapis u novom redu.
+
+ls -ltA --ignore="." --ignore=".." vjezba_2/data
+
+Zadatak_4
+
+1. Izlistaj detaljno sadržaj glavnog direktorija, uključujući sve skrivene datoteke i sortiraj po veličini.
+
+ls -laSh "/mnt/c/Users/itoki/OneDrive/Radna površina/zadatak5 py"
+Ispis:
+    total 33M
+-rwxrwxrwx 1 itoki itoki  33M Feb  4 17:49 extinct_species_dataset.csv
+-rwxrwxrwx 1 itoki itoki 359K Feb  4 22:32 zadatak5.html
+drwxrwxrwx 1 itoki itoki 4.0K Feb  4 22:37 .
+drwxrwxrwx 1 itoki itoki 4.0K Apr  5 16:37 ..
+-rwxrwxrwx 1 itoki itoki   85 Feb  4 22:34 url_dataseta.txt
+
+2. Izlistaj detaljno sadržaj glavnog direktorija, bez skrivenih datoteka, sortiraj po veličini i prikaži jedinice
+(KB, MB, GB) uz veličinu datoteka.
+
+ls -lSh "/mnt/c/Users/itoki/OneDrive/Radna površina/zadatak5 py" | grep -v '^\.'
+total 33M
+Ispis:
+-rwxrwxrwx 1 itoki itoki  33M Feb  4 17:49 extinct_species_dataset.csv
+-rwxrwxrwx 1 itoki itoki 359K Feb  4 22:32 zadatak5.html
+-rwxrwxrwx 1 itoki itoki   85 Feb  4 22:34 url_dataseta.txt
+
+3. Izlistaj sav sadržaj direktorija (uključujući poddirektorije i njihove datoteke i skrivene datoteke), ispis
+neka bude u boji i sortiran po datumu zadnje izmjene (najnovije na početku).
+
+ls -lArt --color=auto "/mnt/c/Users/itoki/OneDrive/Radna površina/zadatak5 py"
+total 33728
+Ispis:
+-rwxrwxrwx 1 itoki itoki 34165888 Feb  4 17:49 extinct_species_dataset.csv
+-rwxrwxrwx 1 itoki itoki   367160 Feb  4 22:32 zadatak5.html
+-rwxrwxrwx 1 itoki itoki       85 Feb  4 22:34 url_dataseta.txt
